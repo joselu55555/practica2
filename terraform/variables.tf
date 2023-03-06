@@ -1,5 +1,5 @@
 variable "resource_group_name" {
-  default = "rg-createdbyTF"
+  default = "joselu-createdbyTF"
 }
 
 variable "location_name" {
