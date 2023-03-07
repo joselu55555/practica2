@@ -105,7 +105,13 @@ resource "azurerm_network_security_group" "joselu_ssh" {
 resource "azurerm_subnet_network_security_group_association" "joselu_ssh" {
   subnet_id                 = azurerm_subnet.subnet.id
   network_security_group_id = azurerm_network_security_group.joselu_ssh.id
-}
+	}
 
 
-
+resource "azurerm_container_registry" "containerRegistryjoselu" {
+  name                = "containerRegistryjoselu"
+  resource_group_name = azurerm_resource_group.joselu.name
+  location            = azurerm_resource_group.joselu.location
+  sku                 = "Premium"
+  admin_enabled       = false
+   }
