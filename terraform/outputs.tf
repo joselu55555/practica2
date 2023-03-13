@@ -15,3 +15,8 @@ output "kube_config" {
   value = azurerm_kubernetes_cluster.joselu_cluster.kube_config_raw
 
   sensitive = true
+}
+
+output "vip" {
+  value = azurerm_public_ip.pip.ip_address
+}
