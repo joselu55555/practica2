@@ -1,0 +1,23 @@
+- name: 'Deploy container to AZURE VM'
+  hosts: AZURE_VM
+
+  tasks:
+  - name: 'Login'
+    containers.podman.podman_login:
+      username: containerRegistryjoselu
+      password: '64ZepnUvJzuGxMWMSd5JN/QR6T8Ar1GUgyb06CoVh6+ACRCuf0Aj'
+      registry: containerRegistryjoselu.azurecr.io
+      
+  - name: 'Pull image from AZURE Container Registry'
+    containers.podman.podman_image:
+      name: containerRegistryjoselu.azurecr.io/webserver
+      tag: containerregistryjoselu.azurecr.io/web2
+      state: build
+      
+  - name: 'Create a container'
+    containers.podman.podman_container:
+      name: web2
+      image: containerregistryjoselu.azurecr.io/web2
+      ports:
+        - "8080:443"
+      state: started
