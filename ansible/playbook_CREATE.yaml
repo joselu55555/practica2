@@ -1,0 +1,18 @@
+- name: 'Creation container and push to AZURE Container Registry'
+  hosts: localhost
+
+  tasks:
+  
+  - name: 'Login'
+    containers.podman.podman_login:
+      username: containerRegistryjoselu
+      password: '64ZepnUvJzuGxMWMSd5JN/QR6T8Ar1GUgyb06CoVh6+ACRCuf0Aj'
+      registry: containerRegistryjoselu.azurecr.io
+      
+  - name: 'Build and Push an image'
+    containers.podman.podman_image:
+      name: containerRegistryjoselu.azurecr.io/web2
+      path: /home/ansible/webserver2/
+      push: yes
+      push_args:
+        dest: containerRegistryjoselu.azurecr.io/web2
