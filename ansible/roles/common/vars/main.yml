@@ -1,9 +1,0 @@
----
-# vars file for common
-rpms:
-  - chrony
-  - firewalld
-
-servicios:
-  - chronyd
-  - firewalld
